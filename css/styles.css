@@ -1,12 +1,227 @@
-/*============================================ 
-	Основные стили
-============================================*/
-body{
-	font-family: 'Open Sans', sans-serif;
-	line-height: 1.5;
-	color: #222;
+body{font-family:'Open Sans',sans-serif;line-height:1.5;color:#000;background-color:#fff}
+ul{padding:0;margin:0}
+input,button{border:none;outline:none}
+header{background:url(../images/bg_head.jpg);background-repeat:no-repeat;background-size:auto}
+.upper_header{padding:40px 0;overflow:hidden}
+header a.logo{display:inline-block}
+header .header_contacts{text-align:center;float:right;padding:0 45px}
+header .header_contacts a{color:#000;font-size:18px;font-weight:700;text-decoration:none}
+header .header_contacts span{display:block;color:#000;font-size:14px;font-style:italic;text-transform:uppercase;text-decoration:underline}
+.section_1 .who::before,footer .adres{background:url(../images/largeSprite.png) no-repeat}
+.ul_block::after,.customNavigation .prev,.customNavigation .next,ul.list li::before,ul.portfolio_ul li::before,footer .contacts > div::before,footer .social_links a{background:url(../images/sprite.png)}
+.form_block{width:50%}
+.form_block h1{font-size:30px;font-weight:300;max-width:680px;margin-top:120px;margin-bottom:85px}
+.form_block h1 strong{font-weight:700}
+.form_block h4{color:#5b4343;font-size:22px;font-weight:700;text-transform:uppercase}
+.form_block label{color:#000;font-weight:700;font-size:20px;position:relative;margin-bottom:20px}
+.form_block label::after{content:'';display:block;position:absolute;top:100%;left:230px;width:314px;height:225px;background:url(../images/arrow.png) -1px 0 no-repeat}
+.form_block label span{font-size:25px;color:#ea3a22;text-transform:uppercase}
+.form_block input[type="text"]{display:block;font-size:20px;width:290px;height:30px;line-height:30px;background:none;border-bottom:1px solid #000;margin-bottom:25px;padding:0 8px}
+input#phone{margin-bottom:0;}
+.message{min-height:25px;color:red;font-weight:bold;font-size:15px;}
+.form_block .order_btn,a.order_btn{background:#f0c92c;font-size:18px;width:190px;height:43px;line-height:43px;border-radius:5px;display:block;text-decoration:none;text-align:center;color:#000;transition:all .1s linear}
+.form_block input[type="text"].error{border-color:red;}
+.form_block .order_btn:hover,a.order_btn:hover,a.start:hover,.portfolio_descr .show_all:hover,footer .social_links a:hover{-webkit-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);box-shadow:0 0 10px 1px rgba(0,0,0,0.75)}
+.form_block .order_btn:active{color:#adadad}
+header .header_end{margin-top:110px;background:rgba(0,0,0,.5);min-height:140px;display:flex;flex-wrap:wrap;align-items:stretch}
+header .header_end > .container{display:flex;flex-wrap:wrap;align-items:center}
+header .header_end > .container > div{width:50%;padding:0 10px}
+header .header_end p{color:#fff;font-size:20px;text-transform:uppercase}
+.section_1 .who{position:relative;height:550px;display:flex;flex-direction:column;justify-content:center;margin-top:100px;margin-bottom:90px}
+.section_1 .who::before{content:'';display:inline-block;width:390px;height:550px;position:absolute;z-index:1;left:0;top:0;background-position:-25px -25px}
+.section_1 .who .text{z-index:10;padding-left:65px}
+.section_1 .who span{font-size:30px;font-weight:700;display:block;text-transform:uppercase}
+.section_1 .who span:last-child{font-size:14px;font-weight:400;padding-left:85px}
+.designer,.programmer{width:49%;display:inline-block;vertical-align:bottom}
+.account_manager{width:100%;display:inline-block;vertical-align:bottom;margin-top:10px;margin-bottom:30px}
+.flex{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
+.section_2{background:#ebeae6;position:relative}
+.section_2 .section_header{background:#f0c92c;text-align:center;padding:30px 0 15px;margin-bottom:50px;position:relative}
+.section_2 .section_header::before{content:'';display:block;width:100%;height:22px;background:url(../images/bg_border.png);position:absolute;left:0;top:100%}
+.section_header h3,.section_header p{font-size:25px;color:#fff;font-weight:700;font-family:'Pt Sans';text-transform:uppercase}
+.section_header p{color:#000}
+.section_header p span{font-size:30px;color:red;border-bottom:2px solid red;display:inline-block;height:39px}
+.section_2 > .container{display:flex;flex-wrap:wrap;justify-content:space-around}
+.ul_container{width:650px;position:relative;z-index:10;margin-bottom:30px}
+.ul_container:last-child{width:800px;display:block;margin:0 auto 30px}
+.ul_block{position:relative}
+.ul_block h2{font-size:30px;color:#000;margin-bottom:20px;font-weight:700;text-transform:uppercase}
+.ul_block p{font-size:16px;color:#4b4b4b;padding-left:75px;margin-bottom:40px}
+.ul_block ul.list{list-style:none}
+ul.list li{font-size:16px;color:#000;display:block;font-weight:700;font-style:italic;height:60px;line-height:60px}
+ul.list li::before{content:'';display:inline-block;vertical-align:middle;height:50px;width:63px;margin-right:20px}
+.ul_block_1 .list li:nth-child(1)::before{background-position:-8px -11px}
+.ul_block_1 .list li:nth-child(2)::before{background-position:-87px -11px}
+.ul_block_1 .list li:nth-child(3)::before{background-position:-166px -11px}
+.ul_block_1 .list li:nth-child(4)::before{background-position:-228px -11px}
+.ul_block_2 .list li:nth-child(1)::before{background-position:-292px -10px}
+.ul_block_2 .list li:nth-child(2)::before{background-position:-360px -4px}
+.ul_block_2 .list li:nth-child(3)::before{background-position:-431px -4px}
+.ul_block_2 .list li:nth-child(4)::before{background-position:-493px -4px}
+.ul_block_3 .list li:nth-child(1)::before{background-position:-553px -4px}
+.ul_block_3 .list li:nth-child(2)::before{background-position:-615px -4px}
+.ul_block_3 .list li:nth-child(3)::before{background-position:-677px -4px}
+.ul_block_3 .list li:nth-child(4)::before{background-position:-739px -4px;position:relative;left:5px}
+.ul_block_3 .list li:nth-child(5)::before{background-position:-795px -4px;position:relative;left:5px}
+.ul_block::after{content:'';display:block;width:200px;height:210px;position:absolute;right:40px;top:65px}
+.ul_block_1::after{background-position:-122px -90px}
+.ul_block_2::after{background-position:-383px -90px;width:245px;right:5px;top:60px}
+.ul_block_3::after{background-position:-646px -87px;right:175px}
+.bg_deg{height:420px;background:#fff;transform:skewY(-4deg);position:absolute;bottom:-110px;right:0;left:0}
+a.start{display:block;position:relative;z-index:10;height:70px;line-height:70px;width:310px;background:#f0c92c;font-size:18px;text-transform:uppercase;font-weight:700;text-decoration:none;color:#000;text-align:center;border-radius:8px;margin:20px auto;transition:all .1s linear}
+a.start:active{color:#adadad}
+.section_3{display:flex;flex-wrap:wrap;padding:0}
+.section_3 .portfolio_descr,.section_3 .portfolio_show{width:50%}
+.section_3 .portfolio_descr > div,.section_3 .portfolio_show > div{position:relative;z-index:10}
+.section_3 .portfolio_descr{background:url(../images/bg_line.jpg);padding:150px;padding-right:20px}
+.portfolio_descr h1,.portfolio_descr .project_name{font-size:40px;color:#000;font-weight:700;text-transform:uppercase}
+.portfolio_descr .project_name{font-weight:400;display:block}
+ul.portfolio_ul{list-style:none;margin-bottom:55px;display:inline-block;text-align:left}
+ul.portfolio_ul li{display:block;height:40px;line-height:40px;font-size:16px;font-weight:300}
+ul.portfolio_ul li::before{content:'';display:inline-block;vertical-align:middle;width:30px;height:30px;margin-right:17px}
+ul.portfolio_ul li:nth-child(1)::before{background-position:-858px -22px}
+ul.portfolio_ul li:nth-child(2)::before{background-position:-900px -22px}
+ul.portfolio_ul li:nth-child(3)::before{background-position:-948px -19px}
+ul.portfolio_ul li:nth-child(4)::before{background-position:-1003px -25px}
+ul.portfolio_ul li > span{font-weight:700}
+.portfolio_descr .show_all{text-decoration:none;color:#000;background:#f0c92c;border-radius:5px;display:block;height:44px;line-height:44px;width:190px;font-size:18px;text-align:center;transition:all .1s linear}
+.section_3 .portfolio_show{background:#172c7a;padding:150px 0}
+.portfolio_show .gallery_block{padding:28px;width:648px;height:520px;margin:0 auto;position:relative;background:url(../images/iMac.png) no-repeat;border:1px solid transparent}
+#owl-demo .item{height:332px;overflow:hidden;margin:0;margin-top:1px;color:#FFF;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-align:center;position:relative}
+.item .wrapper{position:absolute;width:100%;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;background:rgba(23,44,122,.6);color:#fff}
+.item .wrapper .project_name{font-size:36px;text-transform:uppercase;font-weight:700}
+.item .wrapper .project_description{font-size:30px}
+.item .wrapper .project_type{font-size:19px;font-weight:300}
+.owl-pagination{display:none}
+.customNavigation{text-align:center;margin-top:29px;padding:8px 0}
+.customNavigation .prev,.customNavigation .next{width:40px;height:25px}
+.customNavigation .prev{float:left;background-position:-65px -109px}
+.customNavigation .prev:hover{background-position:-5px -146px}
+.customNavigation .next{float:right;background-position:-61px -146px}
+.customNavigation .next:hover{background-position:-7px -110px}
+.customNavigation .site_show{display:inline-block;text-decoration:none;background:#cfcaff;background:linear-gradient(to top,#f2f2f3,#cfcaff);border-radius:5px;text-align:center;height:38px;line-height:38px;width:123px;color:#242428;font-size:15px;transition:all .3s linear}
+.customNavigation .site_show:hover{background:#f0c92c;background:linear-gradient(to top,#fef9e4,#f0c92c)}
+footer h2{text-align:center;font-size:30px;font-weight:700;text-transform:uppercase;margin-bottom:40px}
+footer > .container > div{float:left;position:relative}
+footer .adres{float:left;width:513px;height:390px;background-position:-10px -600px}
+footer .adres p{margin:0;font-size:19px;font-weight:700;text-transform:uppercase;text-align:center;padding:125px 26px 181px 200px}
+footer .contacts{float:left;text-align:center;font-size:19px;text-transform:uppercase;margin:20px;margin-right:160px}
+footer .contacts .mail{margin-bottom:90px}
+footer .contacts .phone{font-weight:700}
+footer .contacts a{text-decoration:none;color:#000000;}
+footer .contacts > div::before{content:'';display:block;width:64px;height:47px;margin:0 auto;margin-bottom:7px}
+footer .contacts .mail::before{background-position:-1059px -7px}
+footer .contacts .phone::before{background-position:-1152px -13px}
+footer .social_links a{display:inline-block;width:100px;height:99px;margin-bottom:20px;margin-right:20px;transition:all .1s linear}
+footer .social_links a.vk{background-position:354px -80px}
+footer .social_links a.fb{background-position:231px -79px}
+footer .social_links a.inst{background-position:105px -80px}
+footer .social_links{margin:45px 20px}
+footer .social_links a:last-child{display:block;margin-bottom:0}
+footer .social_links::after{content:'Мы в соцсетях, а ты?';position:absolute;bottom:45px;left:140px;white-space:nowrap;font-size:19px;font-weight:700;text-transform:uppercase}
+@media (max-width: 1601px) {
+footer .adres{width:450px;height:346px;background-position:-9px -528px;background-size:477px}
+footer .adres p{font-size:15px;padding:110px 17px 167px 172px}
+header{background-position:center;background-size:cover}
 }
-ul {
-	padding: 0;
-	margin: 0;
+@media (max-width: 1500px) {
+.ul_container{width:70%}
+.ul_block::after{right:0}
+.ul_block_2::after{right:-35px}
+.ul_block_3::after{right:10px}
+.form_block h1{margin-top:50px;margin-bottom:50px}
+.form_block label{margin-bottom:20px}
+.ul_block{margin:0}
+.section_2 > .container{justify-content:center}
+.ul_container:last-child{width:70%;margin:0 0 30px}
+}
+@media (max-width: 1400px) {
+.section_3 .portfolio_descr{width:40%;padding:150px 20px;padding-bottom:60px;text-align:center}
+.section_3 .portfolio_show{width:60%}
+.section_3 .portfolio_descr > div{display:inline-block;text-align:left}
+}
+@media (max-width: 1300px) {
+.form_block{width:auto;max-width:650px}
+footer .contacts{margin-right:20px}
+}
+@media (max-width: 1200px) {
+.form_block{width:auto;max-width:650px}
+.section_3 .portfolio_descr,.section_3 .portfolio_show{width:100%}
+header .header_end > .container > div:first-child{width:70%}
+header .header_end > .container > div:last-child{width:30%}
+.section_1 .who{margin-top:50px;margin-bottom:50px}
+.ul_container{width:100%!important}
+.section_3 .portfolio_descr > div{display:block;text-align:center}
+.portfolio_descr .show_all{margin:0 auto}
+footer{padding-bottom:40px}
+footer > .container > div{float:none;margin:0 auto 30px}
+footer .contacts .phone,footer .contacts .mail,footer .social_links a{display:inline-block!important;margin:0 10px;margin-bottom:0}
+.social_links{text-align:center;margin-top:60px!important}
+footer .social_links::after{bottom:105%;left:0;right:0;display:block;text-align:center;height:30px}
+}
+@media (max-width: 991px) {
+.section_1 .who .text,.section_1 .who span:last-child{padding:0;text-align:center}
+.section_1 .who::before{left:50%;transform:translateX(-50%)}
+.ul_container{width:100%}
+header .header_end{padding:10px}
+header .header_end > .container > div{width:100%!important}
+a.order_btn{margin:0 auto}
+.ul_block::after{right:0!important}
+.section_1 .who::before{height:220px;width:200px;background-size:200px auto;background-position:15px 0}
+.section_1 .who{height:220px}
+.section_3 .portfolio_show{padding:60px 0}
+.section_header h3,.section_header p{font-size:20px}
+.section_header p span{height:31px;font-size:25px}
+.ul_block h2,.portfolio_descr h1,.portfolio_descr .project_name,footer h2{font-size:25px}
+.upper_header{padding:20px 0}
+}
+@media (max-width: 768px) {
+.form_block{width:100%;max-width:inherit;text-align:center}
+.form_block input[type="text"]{margin:0 auto 25px;width:100%;max-width: 290px;}
+.form_block h1{font-size:25px}
+.form_block h4,.form_block h4,.form_block label{font-size:18px}
+.form_block .order_btn{margin:0 auto}
+.form_block h1{font-size:20px;margin:20px 0}
+header .header_end p{font-size:15px;text-align:center}
+.form_block label::after{display:none}
+}
+@media (max-width: 700px) {
+.ul_block::after{display:none}
+.ul_container{text-align:center}
+.ul_block ul.list{text-align:left;display:inline-block;vertical-align:middle}
+.portfolio_show .gallery_block{width:400px;background-size:contain;padding:16px;padding-top:15px;height:322px}
+#owl-demo .item{height:206px}
+.customNavigation{margin-top:16px;padding-top:5px}
+.customNavigation .site_show{height:25px;line-height:25px}
+.section_3 .portfolio_show{padding:60px 0}
+footer .social_links a{width:50px;height:50px;background-size:650px;background-repeat:no-repeat}
+footer .social_links a.vk{background-position:-468px -42px}
+footer .social_links a.fb{background-position:-532px -42px}
+footer .social_links a.inst{background-position:-597px -42px}
+footer .container{padding:0!important}
+a.start{width:250px}
+}
+@media (max-width: 500px) {
+ul.list li{overflow:hidden;height:auto;line-height:normal;padding-top:10px}
+ul.list li::before{float:left;position:relative;top:-11px}
+.section_1 .who span{font-size:20px}
+.section_1 .who span:last-child{font-size:12px}
+footer .adres{width:300px;height:232px;background-position:-6px -349px;background-size:317px}
+footer .adres p{padding:62px 17px 92px 108px;font-size:13px}
+header .header_contacts{padding:0;float:none}
+header .header_contacts span{display:none}
+header .header_contacts a{font-size:15px}
+}
+@media (max-width: 450px) {
+.portfolio_show .gallery_block{width:300px;padding:13px;padding-top:12px;height:242px}
+#owl-demo .item{height:153px}
+.item .wrapper .project_name{font-size:25px}
+.item .wrapper .project_description{font-size:20px}
+.item .wrapper .project_type{font-size:15px}
+.customNavigation{margin-top:12px;padding:1px 0}
+.customNavigation .site_show{height:20px;line-height:20px;margin-top:2.5px}
+}
+@media (min-width: 1300px) {
+.container{width:100%;max-width:1620px}
+.section_3 .portfolio_descr,.section_3 .portfolio_show{padding-top:240px;padding-bottom:100px}
 }
