@@ -9,7 +9,7 @@ header .header_contacts a{color:#000;font-size:18px;font-weight:700;text-decorat
 header .header_contacts span{display:block;color:#000;font-size:14px;font-style:italic;text-transform:uppercase;text-decoration:underline}
 .section_1 .who::before,footer .adres{background:url(../images/largeSprite.png) no-repeat}
 .ul_block::after,.customNavigation .prev,.customNavigation .next,ul.list li::before,ul.portfolio_ul li::before,footer .contacts > div::before,footer .social_links a{background:url(../images/sprite.png)}
-.form_block{width:50%}
+.form_block{width:50%;margin-left:40px;}
 .form_block h1{font-size:30px;font-weight:300;max-width:680px;margin-top:120px;margin-bottom:85px}
 .form_block h1 strong{font-weight:700}
 .form_block h4{color:#5b4343;font-size:22px;font-weight:700;text-transform:uppercase}
@@ -23,7 +23,7 @@ input#phone{margin-bottom:0;}
 .form_block input[type="text"].error{border-color:red;}
 .form_block .order_btn:hover,a.order_btn:hover,a.start:hover,.portfolio_descr .show_all:hover,footer .social_links a:hover{-webkit-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);box-shadow:0 0 10px 1px rgba(0,0,0,0.75)}
 .form_block .order_btn:active{color:#adadad}
-header .header_end{margin-top:110px;background:rgba(0,0,0,.5);min-height:140px;display:flex;flex-wrap:wrap;align-items:stretch}
+header .header_end{padding:0 30px;margin-top:110px;background:rgba(0,0,0,.5);min-height:140px;display:flex;flex-wrap:wrap;align-items:stretch}
 header .header_end > .container{display:flex;flex-wrap:wrap;align-items:center}
 header .header_end > .container > div{width:50%;padding:0 10px}
 header .header_end p{color:#fff;font-size:20px;text-transform:uppercase}
@@ -176,7 +176,7 @@ a.order_btn{margin:0 auto}
 .upper_header{padding:20px 0}
 }
 @media (max-width: 768px) {
-.form_block{width:100%;max-width:inherit;text-align:center}
+.form_block{width:100%;max-width:inherit;text-align:center;margin:0}
 .form_block input[type="text"]{margin:0 auto 25px;width:100%;max-width: 290px;}
 .form_block h1{font-size:25px}
 .form_block h4,.form_block h4,.form_block label{font-size:18px}

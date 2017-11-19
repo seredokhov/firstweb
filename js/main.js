@@ -73,3 +73,34 @@ $(function(){
 
 
 });
+
+/* Анимации */
+(function($) {
+	$.fn.animated = function(inEffect) {
+		$(this).each(function() {
+			var ths = $(this);
+			ths.css("opacity", "0").addClass("animated").waypoint(function(dir) {
+				if (dir === "down") {
+					ths.addClass(inEffect).css("opacity", "1");
+				};
+			}, {
+				offset: "90%"
+			});
+
+		});
+	};
+})(jQuery);
+
+$(function(){
+	$(".who").animated("zoomIn");
+	$(".designer").animated("bounceInDown");
+	$(".programmer").animated("bounceInRight");
+	$(".account_manager").animated("bounceInUp");
+	$(".header_end p").animated("slideInLeft");
+	$(".ul_container").animated("fadeInRight");
+	$(".portfolio_descr > div").animated("fadeInLeft");
+	$(".gallery_block").animated("fadeInRight");
+
+});
+
+
