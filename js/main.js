@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 /* Маска */
 jQuery(function($){
-	$("#phone").mask("+9(999) 999-9999");
+	$("[name = phone]").mask("+9(999) 999-9999");
 });
 
 /* Валидация формы*/
@@ -37,42 +37,69 @@ jQuery(function($){
 $(function(){
 	var orderBtn = $('.order_btn');
 	var form = orderBtn.parent();
-	var name = $('#name');
-	var phone = $('#phone');
+	var name = $(".form_block [name = name]");
+	var phone = $(".form_block [name = phone]");
 	var message = $('.message');
 	var re = /\+\d\(\d\d\d\) \d\d\d-\d\d\d\d/;
 	var boll = true;
 
+
+
+
 	orderBtn.click(function(){
 
-		if (name.val().length < 3) {
-			boll = false;
-			name.addClass('error');
-		}
-		else {
-			name.removeClass('error');
-			boll = true;
-		}
-		
-		if ( !re.test(phone.val()) ) {
-			boll = false;
-			phone.addClass('error');
-		}
-		else {
-			phone.removeClass('error');
-			boll = true;
-		}
-		if (boll == true) {
+		if (name.val().length >= 3 && re.test(phone.val()) ) {
 			form.submit();
-		}
-		else {
+			name.removeClass('error');
+			phone.removeClass('error');
+		} else {
+			if (name.val().length < 3) {
+				name.addClass('error');
+			} else {
+				name.removeClass('error');
+			}
+			if ( !re.test(phone.val()) ) {
+				phone.addClass('error');
+			} else {
+				phone.removeClass('error');
+			}
 			message.text('Не корректные данные');
 			return false;
 		}
 	})
-
-
 });
+
+/* Модальная форма*/
+
+$(function(){
+	var send = $('.btn_send');
+	var form = send.parent();
+	var name = $(".modal [name = name]");
+	var phone = $(".modal [name = phone]");
+	var re = /\+\d\(\d\d\d\) \d\d\d-\d\d\d\d/;
+	var boll = true;
+
+	send.click(function(){
+		if (name.val().length >= 3 && re.test(phone.val()) ) {
+			form.submit();
+			name.removeClass('error');
+			phone.removeClass('error');
+		} else {
+			if (name.val().length < 3) {
+				name.addClass('error');
+			} else {
+				name.removeClass('error');
+			}
+			if ( !re.test(phone.val()) ) {
+				phone.addClass('error');
+			} else {
+				phone.removeClass('error');
+			}
+			return false;
+		}
+	})
+});
+
 
 /* Анимации */
 (function($) {
@@ -102,5 +129,63 @@ $(function(){
 	$(".gallery_block").animated("fadeInRight");
 
 });
+
+/* Модалки */
+$(function(){
+	var linkCall = $("a.order_btn").add('a.callback');
+	var linkPolit = $('a.politics');
+	var overlay = $('.overlay');
+	var modalCall = $('.modal.callback');
+	var modalPolitics = $('.modal.politics');
+	var closeModal = $('.modal .close');
+
+	closeModal.click(function(){
+		overlay.fadeOut();
+		modalCall.fadeOut();
+		modalPolitics.fadeOut();
+	})
+	overlay.click(function(){
+		$(this).fadeOut();
+		modalCall.fadeOut();
+		modalPolitics.fadeOut();
+	})
+
+	linkCall.click(function(){
+		overlay.fadeIn();
+		modalCall.fadeIn();
+		return false;
+	})
+	linkPolit.click(function(){
+		overlay.fadeIn();
+		modalPolitics.fadeIn();
+		return false;
+	})
+});
+
+
+//Аякс отправка форм
+
+$(function(){
+	var message = $('.message');
+	var modal = $('.modal');
+	var overlay = $('.overlay');
+	$("form").submit(function() {
+		$.ajax({
+			type: "GET",
+			url: "mail.php",
+			data: $("form").serialize()
+		}).done(function() {
+			alert("Спасибо за заявку!");
+			setTimeout(function() {
+				$.fancybox.close();
+			}, 1000);
+		});
+		message.text('');
+		overlay.fadeOut();
+		modal.fadeOut();
+		return false;
+	});
+});
+
 
 

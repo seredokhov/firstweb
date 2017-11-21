@@ -6,7 +6,7 @@ header{background:url(../images/bg_head.jpg);background-repeat:no-repeat;backgro
 header a.logo{display:inline-block}
 header .header_contacts{text-align:center;float:right;padding:0 45px}
 header .header_contacts a{color:#000;font-size:18px;font-weight:700;text-decoration:none}
-header .header_contacts span{display:block;color:#000;font-size:14px;font-style:italic;text-transform:uppercase;text-decoration:underline}
+header .header_contacts a.callback{font-weight:normal;display:block;color:#000;font-size:14px;font-style:italic;text-transform:uppercase;text-decoration:underline}
 .section_1 .who::before,footer .adres{background:url(../images/largeSprite.png) no-repeat}
 .ul_block::after,.customNavigation .prev,.customNavigation .next,ul.list li::before,ul.portfolio_ul li::before,footer .contacts > div::before,footer .social_links a{background:url(../images/sprite.png)}
 .form_block{width:50%;margin-left:40px;}
@@ -21,7 +21,7 @@ input#phone{margin-bottom:0;}
 .message{min-height:25px;color:red;font-weight:bold;font-size:15px;}
 .form_block .order_btn,a.order_btn{background:#f0c92c;font-size:18px;width:190px;height:43px;line-height:43px;border-radius:5px;display:block;text-decoration:none;text-align:center;color:#000;transition:all .1s linear}
 .form_block input[type="text"].error{border-color:red;}
-.form_block .order_btn:hover,a.order_btn:hover,a.start:hover,.portfolio_descr .show_all:hover,footer .social_links a:hover{-webkit-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);box-shadow:0 0 10px 1px rgba(0,0,0,0.75)}
+.modal .btn_send:hover,.form_block .order_btn:hover,a.order_btn:hover,a.start:hover,.portfolio_descr .show_all:hover,footer .social_links a:hover{-webkit-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 10px 1px rgba(0,0,0,0.75);box-shadow:0 0 10px 1px rgba(0,0,0,0.75)}
 .form_block .order_btn:active{color:#adadad}
 header .header_end{padding:0 30px;margin-top:110px;background:rgba(0,0,0,.5);min-height:140px;display:flex;flex-wrap:wrap;align-items:stretch}
 header .header_end > .container{display:flex;flex-wrap:wrap;align-items:center}
@@ -40,7 +40,7 @@ header .header_end p{color:#fff;font-size:20px;text-transform:uppercase}
 .section_2 .section_header::before{content:'';display:block;width:100%;height:22px;background:url(../images/bg_border.png);position:absolute;left:0;top:100%}
 .section_header h3,.section_header p{font-size:25px;color:#fff;font-weight:700;font-family:'Pt Sans';text-transform:uppercase}
 .section_header p{color:#000}
-.section_header p span{font-size:30px;color:red;border-bottom:2px solid red;display:inline-block;height:39px}
+.section_header p a{cursor:pointer;text-decoration:none;font-size:30px;color:red;border-bottom:2px solid red;display:inline-block;height:39px}
 .section_2 > .container{display:flex;flex-wrap:wrap;justify-content:space-around}
 .ul_container{width:650px;position:relative;z-index:10;margin-bottom:30px}
 .ul_container:last-child{width:800px;display:block;margin:0 auto 30px}
@@ -104,9 +104,10 @@ ul.portfolio_ul li > span{font-weight:700}
 footer h2{text-align:center;font-size:30px;font-weight:700;text-transform:uppercase;margin-bottom:40px}
 footer > .container > div{float:left;position:relative}
 footer .adres{float:left;width:513px;height:390px;background-position:-10px -600px}
-footer .adres p{margin:0;font-size:19px;font-weight:700;text-transform:uppercase;text-align:center;padding:125px 26px 181px 200px}
+footer .adres p{margin:0;font-size:19px;font-weight:700;text-transform:uppercase;text-align:center;padding:125px 36px 181px 191px;}
 footer .contacts{float:left;text-align:center;font-size:19px;text-transform:uppercase;margin:20px;margin-right:160px}
-footer .contacts .mail{margin-bottom:90px}
+footer .contacts .mail{margin-bottom:20px}
+footer .contacts .phone{margin-bottom:20px}
 footer .contacts .phone{font-weight:700}
 footer .contacts a{text-decoration:none;color:#000000;}
 footer .contacts > div::before{content:'';display:block;width:64px;height:47px;margin:0 auto;margin-bottom:7px}
@@ -119,6 +120,26 @@ footer .social_links a.inst{background-position:105px -80px}
 footer .social_links{margin:45px 20px}
 footer .social_links a:last-child{display:block;margin-bottom:0}
 footer .social_links::after{content:'Мы в соцсетях, а ты?';position:absolute;bottom:45px;left:140px;white-space:nowrap;font-size:19px;font-weight:700;text-transform:uppercase}
+footer .politics{font-size:16px;text-decoration:underline !important;display:inline-block;}
+footer .politics:hover{color:red;}
+.overlay{cursor:pointer;display:none;position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.7);}
+.modal{display:none;position:fixed;width:500px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:10px;}
+.modal.callback{height:400px;padding:30px 0;}
+label.check_label{display:block;width:360px;margin:20px auto 0;user-select:none;cursor:pointer;}
+.label_text{width:320px;float:right;}
+.checkbox {display:none;}
+.checkbox-custom {display:inline-block;vertical-align:top;margin-right:5px;width:20px;height:20px;cursor:pointer;position:relative;border:1px solid #54c0ff;}
+.chekbox_block .label {display:inline-block;width:92%;font-size:16px;color:#9b9b9b;line-height:24px;}
+.checkbox:checked + .checkbox-custom::before{content:"\2714";display:inline-block;vertical-align:top;font-size:15px;color:#54c0ff;width:100%;text-align:center;height:18px;line-height:18px;}
+.modal.politics{height:600px;width: 400px;padding:50px 20px 30px;}
+div.content{overflow-y:scroll; max-height: 530px;}
+.modal .close{position:absolute;top:5px;right:10px;}
+.modal .close::before{content:"\2716";display: inline-block;color: #000;font-size:16px;}
+.modal .modal_title{text-align:center;font-size:20px;color:#000000;text-transform:uppercase;font-weight:bold;margin-bottom:20px;}
+.modal input[type="text"]{display:block;width: 300px;margin:0 auto;margin-bottom:30px;height:43px;line-height:43px;padding:0 10px;border-radius:5px;border:1px solid #000000;}
+.modal input[type="text"]:focus{-webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);}
+.modal input.error{border-color:red;}
+.modal .btn_send{display: block;margin:0 auto;height:43px;line-height:43px;text-align:center;background:#f0c92c;transition: all .1s linear;color:#000000;font-size:18px;border-radius:5px;width:190px;}
 @media (max-width: 1601px) {
 footer .adres{width:450px;height:346px;background-position:-9px -528px;background-size:477px}
 footer .adres p{font-size:15px;padding:110px 17px 167px 172px}
@@ -184,6 +205,10 @@ a.order_btn{margin:0 auto}
 .form_block h1{font-size:20px;margin:20px 0}
 header .header_end p{font-size:15px;text-align:center}
 .form_block label::after{display:none}
+.modal.callback {width:320px;}
+.modal input[type="text"]{width:250px;}
+label.check_label{width:285px;}
+.label_text{width:260px;}
 }
 @media (max-width: 700px) {
 .ul_block::after{display:none}
@@ -211,6 +236,7 @@ footer .adres p{padding:62px 17px 92px 108px;font-size:13px}
 header .header_contacts{padding:0;float:none}
 header .header_contacts span{display:none}
 header .header_contacts a{font-size:15px}
+.modal.politics {width:95%;}
 }
 @media (max-width: 450px) {
 .portfolio_show .gallery_block{width:300px;padding:13px;padding-top:12px;height:242px}
@@ -220,8 +246,11 @@ header .header_contacts a{font-size:15px}
 .item .wrapper .project_type{font-size:15px}
 .customNavigation{margin-top:12px;padding:1px 0}
 .customNavigation .site_show{height:20px;line-height:20px;margin-top:2.5px}
+.modal.callback {width:290px;}
+label.check_label{width: 250px}
+.label_text{width:220px;}
 }
 @media (min-width: 1300px) {
-.container{width:100%;max-width:1620px}
+.container{width:100%;max-width:1400px}
 .section_3 .portfolio_descr,.section_3 .portfolio_show{padding-top:240px;padding-bottom:100px}
 }
