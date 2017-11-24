@@ -212,8 +212,9 @@ var dataObj = {
 
 $(document).ready(function() {
 	var testJson;
-	$.getJSON('https://randomuser.me/api/?results=1').success(function(json){
+	$.getJSON('https://github.com/seredokhov/firstweb/blob/master/data.json').success(function(json){
 		testJson = json;
+		console.log(testJson);
 	});
 	//var kk = $.getJSON('https://randomuser.me/api/?results=1');
 	//console.log(kk);
