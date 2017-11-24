@@ -1,30 +1,3 @@
-$(document).ready(function() {
- 
-	var owl = $("#owl-demo");
- 
-	owl.owlCarousel({
-		items : 1,
-		itemsDesktop : [1000,1], 
-		itemsDesktopSmall : [900,1], 
-		itemsTablet: [600,1], 
-		itemsMobile : false 
-	});
- 
-	// Custom Navigation Events
-	$(".next").click(function(){
-		owl.trigger('owl.next');
-	})
-	$(".prev").click(function(){
-		owl.trigger('owl.prev');
-	})
-	$(".play").click(function(){
-		owl.trigger('owl.play',1000);
-	})
-	$(".stop").click(function(){
-		owl.trigger('owl.stop');
-	})
- 
-});
 
 
 /* Маска */
@@ -189,3 +162,109 @@ $(function(){
 
 
 
+
+
+
+// json объект
+
+var dataObj = {
+	"0" : {
+		"type" : "Интернет магазин",
+		"name" : "EYEBAY",
+		"description" : "Яркая защита от солнца",
+		"cost" : "15 000 руб",
+		"time" : "12 дней",
+		"engine" : "Битрикс",
+		"designe" : "Эксклюзив"
+	},
+	"1" : {
+		"type" : "Тип 2",
+		"name" : "Имя2",
+		"description" : "Описание2...",
+		"cost" : "Стоимость2",
+		"time" : "Сроки разработки2",
+		"engine" : "Движок2",
+		"designe" : "Дизайн2"
+	},
+	"2" : {
+		"type" : "Тип 3",
+		"name" : "Имя3",
+		"description" : "Описание3...",
+		"cost" : "Стоимость3",
+		"time" : "Сроки разработки3",
+		"engine" : "Движок3",
+		"designe" : "Дизайн3"
+	},
+	"3" : {
+		"type" : "Тип 4",
+		"name" : "Имя4",
+		"description" : "Описание4...",
+		"cost" : "Стоимость4",
+		"time" : "Сроки разработки4",
+		"engine" : "Движок4",
+		"designe" : "Дизайн4"
+	}
+};
+
+
+
+// Слайдер 
+
+$(document).ready(function() {
+	var testJson;
+	$.getJSON('https://randomuser.me/api/?results=1').success(function(json){
+		testJson = json;
+	});
+	//var kk = $.getJSON('https://randomuser.me/api/?results=1');
+	//console.log(kk);
+
+
+	var owl = $("#owl-demo");
+	var name = $("[data-str = name]");
+	var cost = $("[data-str = cost]");
+	var time = $("[data-str = time]");
+	var engine = $("[data-str = engine]");
+	var designe = $("[data-str = designe]");
+	var description = $("[data-str = description]");
+	var type = $("[data-str = type]");
+	var ItemObj;
+
+	// Функция заполнения полей
+	function filling() {
+		name.text(dataObj[ItemObj.currentItem].name);
+		cost.text(dataObj[ItemObj.currentItem].cost);
+		time.text(dataObj[ItemObj.currentItem].time);
+		engine.text(dataObj[ItemObj.currentItem].engine);
+		designe.text(dataObj[ItemObj.currentItem].designe);
+		description.text(dataObj[ItemObj.currentItem].description);
+		type.text(dataObj[ItemObj.currentItem].type);
+	};
+
+	owl.owlCarousel({
+		items : 1,
+		itemsDesktop : [1000,1], 
+		itemsDesktopSmall : [900,1], 
+		itemsTablet: [600,1], 
+		itemsMobile : false,
+		mouseDrag : false,
+		touchDrag : false
+	});
+	ItemObj = $(".owl-carousel").data('owlCarousel');
+	
+
+	filling(); // Заполнение при загрузке
+
+ 	owl.bind('owl.next owl.prev owl.goTo owl.jumpTo', function(){
+ 		filling(); // Заполнение при срабатывании события
+ 	})
+
+	// Обработчики событий
+	$(".next").click(function(){
+		owl.trigger('owl.next');
+	})
+	$(".prev").click(function(){
+		owl.trigger('owl.prev');
+	})
+
+ 
+});
