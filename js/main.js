@@ -165,8 +165,7 @@ $(function(){
 
 
 
-// json объект
-
+// Пример json объекта
 var dataObj = {
 	"0" : {
 		"type" : "Интернет магазин",
@@ -208,16 +207,13 @@ var dataObj = {
 
 
 
+
+
+
+
 // Слайдер 
 
 $(document).ready(function() {
-	var testJson;
-	$.getJSON('https://github.com/seredokhov/firstweb/blob/master/data.json').success(function(json){
-		testJson = json;
-		console.log(testJson);
-	});
-	//var kk = $.getJSON('https://randomuser.me/api/?results=1');
-	//console.log(kk);
 
 
 	var owl = $("#owl-demo");
@@ -229,18 +225,9 @@ $(document).ready(function() {
 	var description = $("[data-str = description]");
 	var type = $("[data-str = type]");
 	var ItemObj;
+	var response = dataObj; // Заглушка
 
-	// Функция заполнения полей
-	function filling() {
-		name.text(dataObj[ItemObj.currentItem].name);
-		cost.text(dataObj[ItemObj.currentItem].cost);
-		time.text(dataObj[ItemObj.currentItem].time);
-		engine.text(dataObj[ItemObj.currentItem].engine);
-		designe.text(dataObj[ItemObj.currentItem].designe);
-		description.text(dataObj[ItemObj.currentItem].description);
-		type.text(dataObj[ItemObj.currentItem].type);
-	};
-
+	// Инициализация карусели
 	owl.owlCarousel({
 		items : 1,
 		itemsDesktop : [1000,1], 
@@ -251,13 +238,46 @@ $(document).ready(function() {
 		touchDrag : false
 	});
 	ItemObj = $(".owl-carousel").data('owlCarousel');
-	
 
+	// Получение json объекта Работает только по Http
+	/*
+	$.getJSON('data.json', function(data) {
+		response = data;
+		function filling() {
+			name.text(response[ItemObj.currentItem].name);
+			cost.text(response[ItemObj.currentItem].cost);
+			time.text(response[ItemObj.currentItem].time);
+			engine.text(response[ItemObj.currentItem].engine);
+			designe.text(response[ItemObj.currentItem].designe);
+			description.text(response[ItemObj.currentItem].description);
+			type.text(response[ItemObj.currentItem].type);
+		};
+		filling(); // Заполнение при загрузке
+
+		owl.bind('owl.next owl.prev owl.goTo owl.jumpTo', function(){
+			filling(); // Заполнение при срабатывании события
+		})
+	});
+	*/
+
+
+
+	// функция заполнения полей
+	function filling() {
+		name.text(response[ItemObj.currentItem].name);
+		cost.text(response[ItemObj.currentItem].cost);
+		time.text(response[ItemObj.currentItem].time);
+		engine.text(response[ItemObj.currentItem].engine);
+		designe.text(response[ItemObj.currentItem].designe);
+		description.text(response[ItemObj.currentItem].description);
+		type.text(response[ItemObj.currentItem].type);
+	};
 	filling(); // Заполнение при загрузке
 
- 	owl.bind('owl.next owl.prev owl.goTo owl.jumpTo', function(){
- 		filling(); // Заполнение при срабатывании события
- 	})
+	// Обаботчик
+	owl.bind('owl.next owl.prev owl.goTo owl.jumpTo', function(){
+		filling(); // Заполнение при срабатывании события
+	})
 
 	// Обработчики событий
 	$(".next").click(function(){
