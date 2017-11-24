@@ -161,60 +161,9 @@ $(function(){
 });
 
 
-
-
-
-
-// Пример json объекта
-var dataObj = {
-	"0" : {
-		"type" : "Интернет магазин",
-		"name" : "EYEBAY",
-		"description" : "Яркая защита от солнца",
-		"cost" : "15 000 руб",
-		"time" : "12 дней",
-		"engine" : "Битрикс",
-		"designe" : "Эксклюзив"
-	},
-	"1" : {
-		"type" : "Тип 2",
-		"name" : "Имя2",
-		"description" : "Описание2...",
-		"cost" : "Стоимость2",
-		"time" : "Сроки разработки2",
-		"engine" : "Движок2",
-		"designe" : "Дизайн2"
-	},
-	"2" : {
-		"type" : "Тип 3",
-		"name" : "Имя3",
-		"description" : "Описание3...",
-		"cost" : "Стоимость3",
-		"time" : "Сроки разработки3",
-		"engine" : "Движок3",
-		"designe" : "Дизайн3"
-	},
-	"3" : {
-		"type" : "Тип 4",
-		"name" : "Имя4",
-		"description" : "Описание4...",
-		"cost" : "Стоимость4",
-		"time" : "Сроки разработки4",
-		"engine" : "Движок4",
-		"designe" : "Дизайн4"
-	}
-};
-
-
-
-
-
-
-
 // Слайдер 
 
 $(document).ready(function() {
-
 
 	var owl = $("#owl-demo");
 	var name = $("[data-str = name]");
@@ -225,7 +174,7 @@ $(document).ready(function() {
 	var description = $("[data-str = description]");
 	var type = $("[data-str = type]");
 	var ItemObj;
-	var response = dataObj; // Заглушка
+	var response;
 
 	// Инициализация карусели
 	owl.owlCarousel({
@@ -235,14 +184,39 @@ $(document).ready(function() {
 		itemsTablet: [600,1], 
 		itemsMobile : false,
 		mouseDrag : false,
-		touchDrag : false
+		touchDrag : false,
+		jsonPath : 'data.json',
+		jsonSuccess : customDataSuccess
 	});
+
+	// Построение item
+	function customDataSuccess(data){
+		var content = "";
+		for(var i in data["items"]){
+
+		var name = data["items"][i].name;
+		var type = data["items"][i].type;
+		var description = data["items"][i].description;
+		var img = data["items"][i].img;
+		var alt = data["items"][i].alt;
+
+		content += '<div class="item">' +
+						'<div class="wrapper">'+
+							'<span class="project_name" data-str="name">' + name + '</span>' +
+							'<span class="project_description" data-str="description">' + description + '</span>' +
+							'<span class="project_type" data-str="type">' + type + '</span>' +
+						'</div>' +
+						'<img src="' + img + '" alt="' + alt + '" class="img-responsive">' +
+					'</div>';
+
+		}
+		$("#owl-demo").html(content);
+	}
 	ItemObj = $(".owl-carousel").data('owlCarousel');
 
-	// Получение json объекта Работает только по Http
-	/*
+	// Получение json объекта для боковой колонки (Работает только по Http)
 	$.getJSON('data.json', function(data) {
-		response = data;
+		response = data.items;
 		function filling() {
 			name.text(response[ItemObj.currentItem].name);
 			cost.text(response[ItemObj.currentItem].cost);
@@ -258,26 +232,6 @@ $(document).ready(function() {
 			filling(); // Заполнение при срабатывании события
 		})
 	});
-	*/
-
-
-
-	// функция заполнения полей
-	function filling() {
-		name.text(response[ItemObj.currentItem].name);
-		cost.text(response[ItemObj.currentItem].cost);
-		time.text(response[ItemObj.currentItem].time);
-		engine.text(response[ItemObj.currentItem].engine);
-		designe.text(response[ItemObj.currentItem].designe);
-		description.text(response[ItemObj.currentItem].description);
-		type.text(response[ItemObj.currentItem].type);
-	};
-	filling(); // Заполнение при загрузке
-
-	// Обаботчик
-	owl.bind('owl.next owl.prev owl.goTo owl.jumpTo', function(){
-		filling(); // Заполнение при срабатывании события
-	})
 
 	// Обработчики событий
 	$(".next").click(function(){
@@ -287,5 +241,4 @@ $(document).ready(function() {
 		owl.trigger('owl.prev');
 	})
 
- 
 });
